@@ -462,6 +462,85 @@ Possible extensions include:
 
 ---
 
+## ⚠️ Windows Security Notice
+
+The prebuilt executable may be blocked from running on some Windows systems due to Windows Security or antivirus protection. This is an environment/security restriction and does **not** indicate a problem with the CudaNet implementation itself.
+
+The complete source code, CUDA kernels, headers, CMake configuration, and project structure are included in this repository. The project can be inspected, compiled, and tested in a suitable CUDA-enabled development environment.
+
+For security reasons, users should **not disable Windows Security** simply to run the executable. Instead, building the project from source in a trusted development environment is recommended.
+
+## 🚀 Benefits of CudaNet
+
+CudaNet demonstrates how neural-network operations can be implemented and accelerated using **NVIDIA CUDA and GPU parallel processing**.
+
+Key benefits include:
+
+* **GPU Acceleration:** Computationally intensive operations can be distributed across thousands of GPU threads.
+* **Parallel Computation:** Matrix operations, activation functions, loss calculations, and other workloads can take advantage of massive parallelism.
+* **Efficient Neural Network Operations:** CUDA kernels allow important neural-network computations to execute directly on the GPU.
+* **Learning and Research:** The project provides a practical implementation for understanding how neural networks interact with GPU hardware at a lower level.
+* **C++ and CUDA Integration:** Combines the performance and control of C++ with NVIDIA's CUDA programming model.
+* **Modular Architecture:** Components such as matrices, layers, activation functions, loss functions, datasets, and training utilities are separated into reusable modules.
+* **Reduced CPU Workload:** Suitable computations can be moved from the CPU to the GPU, allowing the CPU to focus on other tasks.
+
+## 🧠 Theory Behind the Project
+
+CudaNet is based on the idea of **parallel computing for neural networks**.
+
+Neural networks perform a large number of mathematical operations, particularly matrix multiplication. A CPU typically executes a relatively small number of operations simultaneously, while a GPU is designed to perform a very large number of similar operations in parallel.
+
+CudaNet uses CUDA kernels to take advantage of this architecture.
+
+A simplified workflow is:
+
+**Input Data → Matrix Operations → Neural Network Layers → Activation → Loss Calculation → Backpropagation → Weight Updates**
+
+During these stages, computationally expensive operations can be executed on the GPU.
+
+### Why CUDA?
+
+CUDA provides a programming model that allows developers to write functions called **kernels** that execute across many GPU threads.
+
+For example, a matrix multiplication operation can be divided into many smaller calculations:
+
+```text
+GPU
+ ├── Thread 1 → Calculate one part
+ ├── Thread 2 → Calculate another part
+ ├── Thread 3 → Calculate another part
+ ├── Thread 4 → Calculate another part
+ ├── ...
+ └── Thousands of threads → Work in parallel
+```
+
+This makes GPUs particularly well suited for workloads commonly found in machine learning.
+
+## ⭐ Advantages
+
+CudaNet provides several advantages as a learning and experimental neural-network framework:
+
+1. **Low-level GPU understanding**
+   Demonstrates what happens underneath high-level machine-learning frameworks.
+
+2. **Performance-oriented design**
+   Uses GPU parallelism for computationally intensive operations.
+
+3. **Modular implementation**
+   Neural-network components are separated into reusable classes and modules.
+
+4. **Hands-on CUDA experience**
+   Provides practical experience with CUDA kernels, GPU memory, threads, and parallel computation.
+
+5. **Foundation for further development**
+   The architecture can be extended with additional layers, optimizers, activation functions, datasets, and GPU optimizations.
+
+6. **Educational value**
+   Helps bridge the gap between neural-network theory and the underlying hardware-level computation.
+
+> **Note:** Actual performance improvements depend on the GPU, workload size, memory transfers, kernel implementation, and optimization level. CudaNet is primarily intended as a practical CUDA-based neural-network implementation and learning project.
+
+
 ## Conclusion
 
 CudaNet demonstrates how a basic neural network can be implemented from scratch and accelerated using NVIDIA CUDA.
